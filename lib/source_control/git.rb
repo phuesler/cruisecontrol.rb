@@ -43,12 +43,11 @@ module SourceControl
     end
 
     def update(revision = nil)
-#      if revision
-#        git("reset", ["--hard", revision.number])
-#      else
-#        git("reset", ["--hard"])
-#      end
-      git('pull', ['origin', current_branch])
+      if revision
+        git("reset", ["--hard", revision.number])
+      else
+        git("reset", ["--hard"])
+      end
       git_update_submodule
     end
 
